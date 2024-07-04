@@ -10,7 +10,7 @@ class Student:
         self.subjects = {}
 
     def add_grade(self, subject, grade):
-        self.subjects[subject] = grade
+        self.subjects[subject] = float(grade)
 
     def get_average(self):
         if not self.subjects:
@@ -31,8 +31,12 @@ class GradeManagementSystem:
 
     def add_grade(self, student_id, subject, grade):
         if student_id in self.students:
-            self.students[student_id].add_grade(subject, grade)
-            print(f"Grade added for {self.students[student_id].name} in {subject}.")
+            try:
+                grade = float(grade)
+                self.students[student_id].add_grade(subject, grade)
+                print(f"Grade added for {self.students[student_id].name} in {subject}.")
+            except ValueError:
+                print("Invalid grade value. Please enter a numeric grade.")
         else:
             print("Student not found.")
 
@@ -55,38 +59,49 @@ class GradeManagementSystem:
         return report
 
     def save_data(self):
-        with open('students.csv', 'w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(['ID', 'Name', 'Grade', 'Subjects'])
-            for student in self.students.values():
-                writer.writerow([student.id, student.name, student.grade, 
-                                 ','.join(f"{k}:{v}" for k, v in student.subjects.items())])
-        print("Data saved successfully.")
+        try:
+            with open('students.csv', 'w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['ID', 'Name', 'Grade', 'Subjects'])
+                for student in self.students.values():
+                    writer.writerow([student.id, student.name, student.grade, 
+                                     ','.join(f"{k}:{v}" for k, v in student.subjects.items())])
+            print("Data saved successfully.")
+        except IOError as e:
+            print(f"Error saving data: {e}")
 
     def load_data(self):
         if os.path.exists('students.csv'):
-            with open('students.csv', 'r') as file:
-                reader = csv.reader(file)
-                next(reader)  # Skip header
-                for row in reader:
-                    id, name, grade, subjects = row
-                    self.students[id] = Student(id, name, grade)
-                    if subjects:
-                        for subject in subjects.split(','):
-                            subj, grade = subject.split(':')
-                            self.students[id].add_grade(subj, float(grade))
-            print("Data loaded successfully.")
+            try:
+                with open('students.csv', 'r') as file:
+                    reader = csv.reader(file)
+                    next(reader)  # Skip header
+                    for row in reader:
+                        id, name, grade, subjects = row
+                        self.students[id] = Student(id, name, grade)
+                        if subjects:
+                            for subject in subjects.split(','):
+                                subj, grade = subject.split(':')
+                                self.students[id].add_grade(subj, float(grade))
+                print("Data loaded successfully.")
+            except IOError as e:
+                print(f"Error loading data: {e}")
+            except ValueError as e:
+                print(f"Error parsing data: {e}")
         else:
             print("No existing data found.")
 
     def export_report(self):
         report = self.generate_report()
         filename = f"student_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-        with open(filename, 'w', newline='') as file:
-            writer = csv.DictWriter(file, fieldnames=['ID', 'Name', 'Grade', 'Average'])
-            writer.writeheader()
-            writer.writerows(report)
-        print(f"Report exported to {filename}")
+        try:
+            with open(filename, 'w', newline='') as file:
+                writer = csv.DictWriter(file, fieldnames=['ID', 'Name', 'Grade', 'Average'])
+                writer.writeheader()
+                writer.writerows(report)
+            print(f"Report exported to {filename}")
+        except IOError as e:
+            print(f"Error exporting report: {e}")
 
 def main():
     gms = GradeManagementSystem()
@@ -98,3 +113,37 @@ def main():
         print("3. Get Student Average")
         print("4. Generate Report")
         print("5. Export Report")
+        print("6. Save Data")
+        print("7. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            id = input("Enter student ID: ")
+            name = input("Enter student name: ")
+            grade = input("Enter student grade: ")
+            gms.add_student(id, name, grade)
+        elif choice == '2':
+            student_id = input("Enter student ID: ")
+            subject = input("Enter subject: ")
+            grade = input("Enter grade: ")
+            gms.add_grade(student_id, subject, grade)
+        elif choice == '3':
+            student_id = input("Enter student ID: ")
+            gms.get_student_average(student_id)
+        elif choice == '4':
+            report = gms.generate_report()
+            for record in report:
+                print(record)
+        elif choice == '5':
+            gms.export_report()
+        elif choice == '6':
+            gms.save_data()
+        elif choice == '7':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
