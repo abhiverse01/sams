@@ -4,6 +4,8 @@
 
 The Student Grade Management System is a Python application that allows you to manage student information, including adding students, assigning grades, and generating reports. This system uses a CSV file to store and retrieve student data.
 
+<img src="assets/SAMSbg.png" alt="Logo" width="400" height="300">
+
 ## Features
 
 - **Add Student**: Add a new student with a unique ID, name, and grade.
