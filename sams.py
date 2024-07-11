@@ -198,16 +198,18 @@ class GradeManagementSystem:
 
     def display_all_students(self):
         """
-        Displays all students and their details.
+        Returns a list of all students and their details as strings.
 
         Example:
             gms.display_all_students()
         """
+        students_list = []
         if self.students:
             for student in self.students.values():
-                print(f"ID: {student.id}, Name: {student.name}, Grade: {student.grade}, Subjects: {student.subjects}")
+                students_list.append(f"ID: {student.id}, Name: {student.name}, Grade: {student.grade}, Subjects: {student.subjects}")
         else:
-            print("No students found.")
+            students_list.append("No students found.")
+        return students_list
 
     def generate_report(self):
         report = []
