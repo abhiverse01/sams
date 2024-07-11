@@ -1,5 +1,7 @@
 # Student Account Management System - SAMS
 
+<img src="assets/samsrepologo.png" alt="Logo" width="200" height="200">
+
 The Student Grade Management System is a Python application that allows you to manage student information, including adding students, assigning grades, and generating reports. This system uses a CSV file to store and retrieve student data.
 
 ## Features
