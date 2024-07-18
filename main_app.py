@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from PIL import Image
 import os
-from sams import GradeManagementSystem
+from main_app import GradeManagementSystem
 
 class MainApp(ctk.CTk):
     def __init__(self):
@@ -45,27 +45,20 @@ class HomeFrame(ctk.CTkFrame):
         self.create_widgets()
 
     def create_widgets(self):
-        # Header with solid color
         self.header_frame = ctk.CTkFrame(self, height=60, corner_radius=0, fg_color="#003366")
         self.header_frame.pack(fill="x")
-
         self.header = ctk.CTkLabel(self.header_frame, text="Welcome to SAMS", font=("Arial", 24, "bold"), text_color="white")
         self.header.place(relx=0.5, rely=0.5, anchor="center")
 
-        # Card
         self.card_frame = ctk.CTkFrame(self, width=300, height=200, corner_radius=15, fg_color="white")
         self.card_frame.pack(pady=100, padx=20)
-
         self.card_label = ctk.CTkLabel(self.card_frame, text="SAMS", font=("Arial", 18, "bold"), text_color="#333333")
         self.card_label.pack(pady=20)
-
         self.card_button = ctk.CTkButton(self.card_frame, text="Go to SAMS", command=lambda: self.controller.show_frame("SAMSFrame"), width=120, height=40, corner_radius=20, fg_color="#003366", text_color="white")
         self.card_button.pack(pady=10)
 
-        # Footer
         self.footer_frame = ctk.CTkFrame(self, height=30, corner_radius=0, fg_color="#003366")
         self.footer_frame.pack(side="bottom", fill="x")
-
         self.footer = ctk.CTkLabel(self.footer_frame, text="Abhishek Shah | 2024", font=("Arial", 12), text_color="white")
         self.footer.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -73,18 +66,14 @@ class SAMSFrame(ctk.CTkFrame):
     def __init__(self, parent, controller):
         super().__init__(parent, fg_color="transparent")
         self.controller = controller
-        self.gms = controller.gms
         self.create_widgets()
 
     def create_widgets(self):
-        # Header with solid color
         self.header_frame = ctk.CTkFrame(self, height=60, corner_radius=0, fg_color="#003366")
         self.header_frame.pack(fill="x")
-
         self.header = ctk.CTkLabel(self.header_frame, text="Student Account Management System", font=("Arial", 20, "bold"), text_color="white")
         self.header.place(relx=0.5, rely=0.5, anchor="center")
 
-        # Widgets for adding student
         self.label_id = ctk.CTkLabel(self, text="Student ID:", font=("Arial", 14))
         self.label_id.pack(padx=10, pady=5)
         self.entry_id = ctk.CTkEntry(self, font=("Arial", 14))
@@ -103,7 +92,6 @@ class SAMSFrame(ctk.CTkFrame):
         self.button_add = ctk.CTkButton(self, text="Add Student", font=("Arial", 14), command=self.add_student)
         self.button_add.pack(pady=10)
 
-        # Widgets for displaying students
         self.text_display = ctk.CTkTextbox(self, width=700, height=250, font=("Arial", 12))
         self.text_display.pack(pady=10)
 
@@ -116,17 +104,17 @@ class SAMSFrame(ctk.CTkFrame):
         student_grade = self.entry_grade.get()
 
         if student_id and student_name and student_grade:
-            self.gms.add_student(student_id, student_name, student_grade)
+            response = self.controller.gms.add_student(student_id, student_name, student_grade)
+            self.text_display.insert(ctk.END, response + "\n")
             self.entry_id.delete(0, ctk.END)
             self.entry_name.delete(0, ctk.END)
             self.entry_grade.delete(0, ctk.END)
-            self.gms.save_data()  # Save data to CSV
         else:
             self.text_display.insert(ctk.END, "Please fill in all fields.\n")
 
     def display_all_students(self):
         self.text_display.delete("1.0", ctk.END)
-        students = self.gms.display_all_students()
+        students = self.controller.gms.display_all_students()
         for student in students:
             self.text_display.insert(ctk.END, f"{student}\n")
 
