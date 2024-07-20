@@ -6,6 +6,15 @@ The Student Grade Management System is a Python application that allows you to m
 
 <img src="assets/SAMSbg.png" alt="Logo" width="400" height="300">
 
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Menu Options](#menu-options)
+- [File Structure](#file-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - **Add Student**: Add a new student with a unique ID, name, and grade.
