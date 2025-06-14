@@ -1,4 +1,4 @@
-customtkinter==5.4.2
-pytest==7.4.2
-flake8==6.1.0
-black==23.3.0
+customtkinter
+pytest
+flake8
+black
