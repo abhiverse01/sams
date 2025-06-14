@@ -47,7 +47,7 @@ The Student Grade Management System is a Python application that allows you to m
 Run the application:
 
 ```sh
-python sams.py
+python main.py
 ```
 
 ## Menu Options
