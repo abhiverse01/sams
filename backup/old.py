@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from PIL import Image
 import os
-from scrap.sams import GradeManagementSystem
+from sams import GradeManagementSystem
 
 class MainApp(ctk.CTk):
     def __init__(self):
