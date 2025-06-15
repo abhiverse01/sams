@@ -1,89 +1,119 @@
-# Student Account Management System - SAMS
+# 🎓 Student Account Management System (SAMS)
 
-<img src="assets/samsrepologo.png" alt="Logo" width="200" height="200">
+<div align="center">
+  <img src="assets/samsrepologo.png" alt="SAMS Logo" width="150" height="150" />
+</div>
 
-The Student Grade Management System is a Python application that allows you to manage student information, including adding students, assigning grades, and generating reports. This system uses a CSV file to store and retrieve student data.
+A lightweight Python application designed to manage student accounts, grades, and academic records through a simple CLI. SAMS uses CSV files for data storage and retrieval — perfect for small-scale educational setups or learning projects.
 
-<img src="assets/SAMSbg.png" alt="Logo" width="400" height="300">
+<div align="center">
+  <img src="assets/SAMSbg.png" alt="SAMS UI Preview" width="500" />
+</div>
 
-## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Menu Options](#menu-options)
-- [File Structure](#file-structure)
-- [Contributing](#contributing)
-- [License](#license)
+---
 
-## Features
+## 📑 Table of Contents
 
-- **Add Student**: Add a new student with a unique ID, name, and grade.
-- **Remove Student**: Remove an existing student using their ID.
-- **Update Student**: Update the name or grade of an existing student.
-- **Add Grade**: Assign grades for specific subjects to students.
-- **Get Student Average**: Calculate and display the average grade of a student.
-- **Get Student Details**: Retrieve and display detailed information about a specific student.
-- **Display All Students**: Display the information of all students in the system.
-- **Generate Report**: Generate a report containing student IDs, names, grades, and average grades.
-- **Export Report**: Export the generated report to a CSV file.
-- **Save Data**: Save the current student data to a CSV file.
-- **Load Data**: Load student data from an existing CSV file.
+- [✨ Features](#-features)
+- [🚀 Installation](#-installation)
+- [⚙️ Usage](#-usage)
+- [📋 Menu Options](#-menu-options)
+- [📁 File Structure](#-file-structure)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
-## Installation
+---
 
-1. Clone the repository:
+## ✨ Features
 
-    ```sh
+- ➕ **Add Student**: Register students with unique IDs, names, and grades  
+- ❌ **Remove Student**: Remove student data using student ID  
+- 🔄 **Update Student**: Modify student name or grade  
+- 🧮 **Add Grade**: Assign subject-specific grades  
+- 📊 **Student Average**: Calculate and display a student’s average score  
+- 🔍 **View Student**: View detailed student information  
+- 🧾 **View All**: Display all students in the system  
+- 📄 **Generate Report**: Compile student grades and averages  
+- 💾 **Export Report**: Save reports as CSV  
+- 📥 **Load Data**: Load student data from CSV  
+- 💾 **Save Data**: Save current session data to CSV  
+
+---
+
+## 🚀 Installation
+
+1. **Clone the repository**:
+    ```bash
     git clone https://github.com/abhiverse01/sams.git
     cd sams
     ```
 
-2. Ensure you have Python installed (version 3.6+ recommended).
+2. **Install Python (v3.6+)** if you haven’t already.
 
-3. Install any required dependencies (none for this basic script).
+3. **Dependencies**: No external packages required (uses Python standard library only).
 
-## Usage
+---
 
-Run the application:
+## ⚙️ Usage
 
-```sh
+Run the application using:
+
+```bash
 python main.py
 ```
 
-## Menu Options
+---
 
-1. Add Student: Enter student ID, name, and grade to add a new student.
+## 📋 Menu Options
 
-2. Remove Student: Enter the student ID to remove a student.
+| Option # | Operation              | Description |
+|----------|------------------------|-------------|
+| 1        | Add Student            | Add student ID, name, and grade |
+| 2        | Remove Student         | Delete student record via ID |
+| 3        | Update Student         | Modify student name or grade |
+| 4        | Add Grade              | Add subject-specific grade |
+| 5        | Get Student Average    | View average of grades |
+| 6        | Get Student Details    | Show student profile |
+| 7        | Display All Students   | Show all stored records |
+| 8        | Generate Report        | Compile grade report |
+| 9        | Export Report          | Save report to CSV |
+| 10       | Save Data              | Save current session |
+| 11       | Exit                   | Exit the program |
 
-3. Update Student: Enter the student ID and new name or grade to update a student's information.
+---
 
-4. Add Grade: Enter the student ID, subject, and grade to assign a grade to a student.
+## 📁 File Structure
 
-5. Get Student Average: Enter the student ID to calculate and display the average grade.
+```
+sams/
+│
+├── main.py             # Entry point of the application
+├── sams.py             # Core logic of the SAMS system
+├── students.csv        # Student data storage
+├── report.csv          # Generated report storage
+├── assets/
+│   ├── samsrepologo.png
+│   └── SAMSbg.png
+└── README.md           # Project documentation
+```
 
-6. Get Student Details: Enter the student ID to retrieve detailed information about a student.
+---
 
-7. Display All Students: Display information of all students.
+## 🤝 Contributing
 
-8. Generate Report: Generate a report with student information and average grades.
+We welcome contributions! 🚀  
+To contribute:
 
-9. Export Report: Export the generated report to a CSV file.
+1. Fork the repository  
+2. Create a new branch (`git checkout -b feature-name`)  
+3. Commit your changes (`git commit -m "Add new feature"`)  
+4. Push to the branch (`git push origin feature-name`)  
+5. Open a Pull Request  
 
-10. Save Data: Save the current student data to students.csv.
+---
 
-11. Exit: Exit the application.
+## 📄 License
 
-## File Structure
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
-- **sams.py**: Main application file.
-- **students.csv**: CSV file to store student data.
-- **report.csv**: CSV file to store report data.
-- **README.md**: The Readme for this project.
-
-## Contributing
-
-- Contributions are welcome! Please fork the repository and submit a pull request.
-
-## License
-- This project is licensed under the MIT License. [MIT](https://choosealicense.com/licenses/mit/)
+---
