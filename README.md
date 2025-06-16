@@ -101,7 +101,7 @@ sams/
 
 ## 🤝 Contributing
 
-We welcome contributions! 🚀  
+I welcome all contributions! 🚀  
 To contribute:
 
 1. Fork the repository  
@@ -115,5 +115,7 @@ To contribute:
 ## 📄 License
 
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+
 
 ---
