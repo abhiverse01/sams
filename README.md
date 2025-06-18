@@ -86,16 +86,37 @@ python main.py
 
 ```
 sams/
-│
-├── main.py             # Entry point of the application
-├── sams.py             # Core logic of the SAMS system
-├── students.csv        # Student data storage
-├── report.csv          # Generated report storage
+├── .github/
+│   ├── workflows/
+│   │   └── python-app.yml
 ├── assets/
-│   ├── samsrepologo.png
 │   └── SAMSbg.png
-|   models
-└── README.md           # Project documentation
+│   └── samsrepologo.png
+├── backup/
+│   └── old.py
+│   └── sams.py
+├── data/
+│   └── students.csv
+├── models/
+│   └── student.py
+├── services/
+│   └── gms.py
+├── ui/
+│   ├── components/
+│   ├── frames/
+│   └── home_frame.py
+│   └── main_app.py
+│   └── remove_frame.py
+│   └── sams_frame.py
+│   └── update_frame.py
+├── utils/
+│   └── file_handler.py
+│   └── logger.py
+└── README.md
+└── main.py
+└── project_stx.txt
+└── requirements.txt
+└── stx.py
 ```
 
 ---
