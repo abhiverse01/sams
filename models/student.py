@@ -17,9 +17,27 @@ class Student:
 
     def add_grade(self, subject:str, grade: Union[int, float, str]) -> None:
         """Add or update a subject grade for the student."""
-        self.subjects[subject] = float(grade)
+        try:
+            self.subjects[subject.strip().title()] = float(grade)
+        except ValueError:
+            raise ValueError(f"Invalid grade value for subject' {subject}': {grade}")
 
     def get_average(self):
+        """Return the average grade score across all subjects."""
         if not self.subjects:
             return 0.0
         return sum(self.subjects.values()) / len(self.subjects)
+    
+    def __repr__(self) -> str:
+        """Developer-friendly representation"""
+        return f"Student({self.id}, {self.name}, Grade: {self.grade}, Subjects: {len(self.subjects)})"
+
+    def to_dict(self) -> Dict[str, Union[str, float, dict]]:
+        """Convert the student record to a dictionary."""
+        return {
+            "id": self.id,
+            "name": self.name,
+            "grade": self.grade,
+            "subjects": self.subjects,
+            "average": self.get_average()
+        }
