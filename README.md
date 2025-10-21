@@ -89,6 +89,15 @@ sams/
 ├── .github/
 │   ├── workflows/
 │   │   └── python-app.yml
+├── .pytest_cache/
+│   ├── v/
+│   │   ├── cache/
+│   │   │   └── lastfailed
+│   │   │   └── nodeids
+│   │   │   └── stepwise
+│   └── .gitignore
+│   └── CACHEDIR.TAG
+│   └── README.md
 ├── assets/
 │   └── SAMSbg.png
 │   └── samsrepologo.png
@@ -98,9 +107,14 @@ sams/
 ├── data/
 │   └── students.csv
 ├── models/
+│   └── __init__.py
 │   └── student.py
 ├── services/
 │   └── gms.py
+├── tests/
+│   └── __init__.py
+│   └── conftest.py
+│   └── test_student.py
 ├── ui/
 │   ├── components/
 │   ├── frames/
@@ -117,6 +131,7 @@ sams/
 └── project_stx.txt
 └── requirements.txt
 └── stx.py
+
 ```
 
 ---
