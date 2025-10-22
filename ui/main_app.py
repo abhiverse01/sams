@@ -67,6 +67,46 @@ class MainApp(ctk.CTk):
         # No actual fade animation possible with CTk frames, but can extend here for complex effects
 
 
+        # -------------------- Controller Logic -------------------- #
+
+    def add_student(self, student_id, name, grade):
+        """Add a new student to the system."""
+        result = self.gms.add_student(student_id, name, grade)
+        self.refresh_data_views()
+        return result
+
+    def update_student(self, student_id, name=None, grade=None):
+        """Update an existing student's information."""
+        result = self.gms.update_student(student_id, name, grade)
+        self.refresh_data_views()
+        return result
+
+    def remove_student(self, student_id):
+        """Remove a student by ID."""
+        result = self.gms.remove_student(student_id)
+        self.refresh_data_views()
+        return result
+
+    def get_student(self, student_id):
+        """Fetch a student record."""
+        return self.gms.get_student(student_id)
+
+    def get_all_students(self):
+        """Return all students."""
+        return self.gms.get_all_students()
+
+    def refresh_data_views(self):
+        """Refresh data views across frames (if they exist)."""
+        if hasattr(self.frames.get("HomeFrame"), "refresh_data"):
+            self.frames["HomeFrame"].refresh_data()
+        if hasattr(self.frames.get("SAMSFrame"), "refresh_data"):
+            self.frames["SAMSFrame"].refresh_data()
+        if hasattr(self.frames.get("UpdateFrame"), "refresh_data"):
+            self.frames["UpdateFrame"].refresh_data()
+        if hasattr(self.frames.get("RemoveFrame"), "refresh_data"):
+            self.frames["RemoveFrame"].refresh_data()
+
+    
     def create_widgets(self):
         # Load initial background image and overlay
         self.load_background_image()
