@@ -67,7 +67,7 @@ class SAMSFrame(ctk.CTkFrame):
         self.buttons_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.buttons_frame.pack(padx=20, pady=10, fill="x")
 
-        btn_params = dict(width=180, height=45, corner_radius=20, font=ctk.CTkFont(size=16, weight="bold"))
+        btn_params = dict(width=180, height=45, corner_radius=20, font=ctk.CTkFont(size=16, weight="bold")) # type: ignore
 
         self.button_add = ctk.CTkButton(
             self.buttons_frame,
@@ -148,13 +148,24 @@ class SAMSFrame(ctk.CTkFrame):
 
         # Proceed to add student
         response = self.controller.gms.add_student(student_id, student_name, student_grade)
-        self.show_info_modal("Success", response)
-        self.text_display.insert(ctk.END, response + "\n")
+
+        # Extract message safely
+        if isinstance(response, dict):
+            message = response.get("message", str(response))
+        else:
+            message = str(response)
+
+        # Display message in text box
+        self.text_display.insert(ctk.END, message + "\n")
+
+        # Show modal with message only
+        self.show_info_modal("Success", message)
 
         # Clear entries
         self.entry_id.delete(0, ctk.END)
         self.entry_name.delete(0, ctk.END)
         self.entry_grade.delete(0, ctk.END)
+
 
     def is_valid_grade(self, grade):
         valid_grades = ['A', 'B', 'C', 'D', 'F']
