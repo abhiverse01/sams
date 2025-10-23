@@ -45,3 +45,4 @@ coverage.xml
 # Local development settings
 local_settings.py
 db.sqlite3__pycache__/
+__pycache__/
