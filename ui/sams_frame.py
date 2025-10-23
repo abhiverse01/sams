@@ -74,7 +74,7 @@ class SAMSFrame(ctk.CTkFrame):
             text="Add Student",
             fg_color="#007acc",
             hover_color="#0099ff",
-            **btn_params,
+            **btn_params, # type: ignore
             command=self.add_student
         )
         self.button_add.grid(row=0, column=0, padx=10, pady=10)
@@ -84,7 +84,7 @@ class SAMSFrame(ctk.CTkFrame):
             text="Display All Students",
             fg_color="#007acc",
             hover_color="#0099ff",
-            **btn_params,
+            **btn_params, # type: ignore
             command=self.display_all_students
         )
         self.button_display.grid(row=0, column=1, padx=10, pady=10)
@@ -94,7 +94,7 @@ class SAMSFrame(ctk.CTkFrame):
             text="Update Student",
             fg_color="#004080",
             hover_color="#0059b3",
-            **btn_params,
+            **btn_params, # type: ignore
             command=lambda: self.controller.show_frame("UpdateFrame")
         )
         self.button_update.grid(row=1, column=0, padx=10, pady=10)
@@ -104,7 +104,7 @@ class SAMSFrame(ctk.CTkFrame):
             text="Remove Student",
             fg_color="#a02c2c",
             hover_color="#d13f3f",
-            **btn_params,
+            **btn_params, # type: ignore
             command=lambda: self.controller.show_frame("RemoveFrame")
         )
         self.button_remove.grid(row=1, column=1, padx=10, pady=10)
