@@ -1,4 +1,5 @@
-import customtkinter as ctk
+import customtkinter as ctk 
+
 
 class HomeFrame(ctk.CTkFrame):
     def __init__(self, parent, controller):
@@ -92,3 +93,4 @@ class HomeFrame(ctk.CTkFrame):
             text_color="#a3aed0"
         )
         self.footer_label.place(relx=0.5, rely=0.5, anchor="center")
+
