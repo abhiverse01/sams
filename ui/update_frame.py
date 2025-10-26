@@ -78,7 +78,7 @@ class UpdateFrame(ctk.CTkFrame):
             text="Update Student",
             fg_color="#007acc",
             hover_color="#0099ff",
-            **btn_params,
+            **btn_params, # type: ignore
             command=self.update_student
         )
         self.button_update.grid(row=0, column=0, padx=10, pady=10)
@@ -88,7 +88,7 @@ class UpdateFrame(ctk.CTkFrame):
             text="Back to SAMS",
             fg_color="#a02c2c",
             hover_color="#d13f3f",
-            **btn_params,
+            **btn_params, # type: ignore
             command=lambda: self.controller.show_frame("SAMSFrame")
         )
         self.button_back.grid(row=0, column=1, padx=10, pady=10)
@@ -140,6 +140,7 @@ class UpdateFrame(ctk.CTkFrame):
         self.entry_id.delete(0, ctk.END)
         self.entry_name.delete(0, ctk.END)
         self.entry_grade.delete(0, ctk.END)
+
 
     def is_valid_grade(self, grade):
         valid_grades = ['A', 'B', 'C', 'D', 'F']

@@ -39,6 +39,7 @@ sams/
 ├── utils/
 │   └── file_handler.py
 │   └── logger.py
+└── .gitignore
 └── README.md
 └── main.py
 └── project_stx.txt
