@@ -93,7 +93,7 @@ class UpdateFrame(ctk.CTkFrame):
         )
         self.button_back.grid(row=0, column=1, padx=10, pady=10)
 
-        # Output Textbox
+        # Output Textbox 
         self.text_display = ctk.CTkTextbox(
             self,
             width=700,
@@ -175,3 +175,8 @@ class UpdateFrame(ctk.CTkFrame):
 
         btn = Button(modal, text="OK", command=modal.destroy)
         btn.pack(pady=10)
+
+"""
+The Update Frame for the Student Administration Management System (SAMS).
+
+"""
